@@ -1,0 +1,248 @@
+<div id="headTri">
+    <div id="filter">
+        <div>
+            <p>Filtrer:</p>
+            <form method="post" action="<?= $requestUrl ?>">
+                <ul class="list">
+                    <li>
+                        <label for="Assassin">Assassin</label>
+                        <input type="radio" id="Assassin" name="filter" value="Assassin">
+                    </li>
+                    <li>
+                        <label for="Mage">Mage</label>
+                        <input type="radio" id="Mage" name="filter" value="Mage">
+                    </li>
+                    <li>
+                        <label for="Support">Support</label>
+                        <input type="radio" id="Support" name="filter" value="Support">
+                    </li>
+                    <li>
+                        <label for="Tank">Tank</label>
+                        <input type="radio" id="Tank" name="filter" value="Tank">
+                    </li>
+                    <li>
+                        <label for="Combattant">Combattant</label>
+                        <input type="radio" id="Combattant" name="filter" value="Combattant">
+                    </li>
+                    <li>
+                        <label for="Tireur">Tireur</label>
+                        <input type="radio" id="Tireur" name="filter" value="Tireur">
+                    </li>
+                </ul>
+                <input type="submit" value="START" id="filterCat">
+            </form>
+        </div>
+        <div>
+            <p>Tri par:</p>
+            <form method="post" action="<?= $requestUrl; ?>">
+                <label for="tri1">Prix</label>
+                <input type="radio" id="tri1" name="tri" value="price">
+                <label for="tri2">Type</label>
+                <input type="radio" id="tri2" name="tri" value="type">
+                <input type="submit" value="GO" id="filterPorT">
+            </form>
+        </div>
+
+    </div>
+    <div id="search">
+        <form method="post" action="<?= $requestUrl; ?>">
+            <input type="search" placeholder="Search..." name="search">
+            <input type="submit" value="search" id="searchBtn">
+        </form>
+    </div>
+</div>
+
+<div class="articles visible">
+    <?php if (isset($articles)) {
+        foreach ($articles as $oneArticle) { ?>
+            <div class="oneArticle">
+                <img class="product-img" src="<?= $wwwUrl . $oneArticle['Image']; ?>">
+                <div class="desc">
+                    <ul class="list">
+                        <li>Nom: <?= $oneArticle['NameProduct'] ?></li>
+                        <li>Description: <?= $oneArticle['Description'] ?></li>
+                        <li>Price: <?= $oneArticle['Price']; ?> Blue Essence</li>
+                        <li>Type: <?= $oneArticle['Type'] ?></li>
+                        <li>Catégorie: <?= $oneArticle['FirstCat'] ?> <?= $oneArticle['SecondCat'] ?> <?= $oneArticle['ThirdCat'] ?></li>
+                    </ul>
+                    <button class="modalBtn">En savoir plus</button>
+                </div>
+
+                <div class="modal myModal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div class="slick">
+                            <div><img src="<?= $wwwUrl . $oneArticle['Image']; ?>"></div>
+                            <?php if (isset($oneArticle['Image2'])){ ?>
+                                <div><img src="<?= $wwwUrl . $oneArticle['Image2']; ?>"></div>
+                            <?php } ?>
+                        </div>
+                        <ul class="list">
+                            <li>Nom: <?= $oneArticle['NameProduct'] ?></li>
+                            <li>Description: <?= $oneArticle['Description']; ?></li>
+                            <li>Price: <?= $oneArticle['Price']; ?> Blue Essence</li>
+                            <li>Type: <?= $oneArticle['Type'] ?></li>
+                            <li>Catégorie: <?= $oneArticle['FirstCat'] ?> <?= $oneArticle['SecondCat'] ?> <?= $oneArticle['ThirdCat'] ?></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        <?php }
+    } ?>
+</div>
+
+<div class="results hidden">
+    <?php if(isset($search)) {
+        foreach ($search as $oneResult) { ?>
+            <div class="articleResult">
+                <img class="product-img" src="<?= $wwwUrl . $oneResult['Image']; ?>">
+                <div class="desc">
+                    <ul class="list">
+                        <li>Nom: <?= $oneResult['NameProduct'] ?></li>
+                        <li>Description: <?= $oneResult['Description']; ?></li>
+                        <li>Price: <?= $oneResult['Price']; ?> Blue Essence</li>
+                        <li>Type: <?= $oneResult['Type'] ?></li>
+                        <li>Catégorie: <?= $oneResult['FirstCat'] ?> <?= $oneResult['SecondCat'] ?> <?= $oneResult['ThirdCat'] ?></li>
+                    </ul>
+                    <button class="modalBtn">En savoir plus</button>
+                </div>
+
+                <div class="modal myModal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div class="slick">
+                            <div><img src="<?= $wwwUrl . $oneResult['Image']; ?>"></div>
+                            <?php if (isset($oneResult['Image2'])){ ?>
+                                <div><img src="<?= $wwwUrl . $oneResult['Image2']; ?>"></div>
+                            <?php } ?>
+                        </div>
+                        <ul class="list">
+                            <li>Nom: <?= $oneResult['NameProduct'] ?></li>
+                            <li>Description: <?= $oneResult['Description']; ?></li>
+                            <li>Price: <?= $oneResult['Price']; ?> Blue Essence</li>
+                            <li>Type: <?= $oneResult['Type'] ?></li>
+                            <li>Catégorie: <?= $oneResult['FirstCat'] ?> <?= $oneResult['SecondCat'] ?> <?= $oneResult['ThirdCat'] ?></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        <?php }
+    } ?>
+</div>
+
+<div class="tri-results hidden">
+    <?php if(isset($tri)) {
+        foreach ($tri as $oneTri) { ?>
+            <div class="oneArticle">
+                <img class="product-img" src="<?= $wwwUrl . $oneTri['Image']; ?>">
+                <div class="desc">
+                    <ul class="list">
+                        <li>Nom: <?= $oneTri['NameProduct'] ?></li>
+                        <li>Description: <?= $oneTri['Description']; ?></li>
+                        <li>Price: <?= $oneTri['Price']; ?> Blue Essence</li>
+                        <li>Type: <?= $oneTri['Type'] ?></li>
+                        <li>Catégorie: <?= $oneTri['FirstCat'] ?> <?= $oneTri['SecondCat'] ?> <?= $oneTri['ThirdCat'] ?></li>
+                    </ul>
+                    <button class="modalBtn">En savoir plus</button>
+                </div>
+
+                <div class="modal myModal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div class="slick">
+                            <div><img src="<?= $wwwUrl . $oneTri['Image']; ?>"></div>
+                            <?php if (isset($oneTri['Image2'])){ ?>
+                                <div><img src="<?= $wwwUrl . $oneTri['Image2']; ?>"></div>
+                            <?php } ?>
+                        </div>
+                        <ul class="list">
+                            <li>Nom: <?= $oneTri['NameProduct'] ?></li>
+                            <li>Description: <?= $oneTri['Description']; ?></li>
+                            <li>Price: <?= $oneTri['Price']; ?> Blue Essence</li>
+                            <li>Type: <?= $oneTri['Type'] ?></li>
+                            <li>Catégorie: <?= $oneTri['FirstCat'] ?> <?= $oneTri['SecondCat'] ?> <?= $oneTri['ThirdCat'] ?></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        <?php }
+    } ?>
+</div>
+
+<div class="triT-results hidden">
+    <?php if(isset($triT)) {
+        foreach ($triT as $oneTri) { ?>
+            <div class="oneArticle">
+                <img class="product-img" src="<?= $wwwUrl . $oneTri['Image']; ?>">
+                <div class="desc">
+                    <ul class="list">
+                        <li>Nom: <?= $oneTri['NameProduct'] ?></li>
+                        <li>Description: <?= $oneTri['Description']; ?></li>
+                        <li>Price: <?= $oneTri['Price']; ?> Blue Essence</li>
+                        <li>Type: <?= $oneTri['Type'] ?></li>
+                        <li>Catégorie: <?= $oneTri['FirstCat'] ?> <?= $oneTri['SecondCat'] ?> <?= $oneTri['ThirdCat'] ?></li>
+                    </ul>
+                    <button class="modalBtn">En savoir plus</button>
+                </div>
+
+                <div class="modal myModal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div class="slick">
+                            <div><img src="<?= $wwwUrl . $oneTri['Image']; ?>"></div>
+                            <?php if (isset($oneTri['Image2'])){ ?>
+                                <div><img src="<?= $wwwUrl . $oneTri['Image2']; ?>"></div>
+                            <?php } ?>
+                        </div>
+                        <ul class="list">
+                            <li>Nom: <?= $oneTri['NameProduct'] ?></li>
+                            <li>Description: <?= $oneTri['Description']; ?></li>
+                            <li>Price: <?= $oneTri['Price']; ?> Blue Essence</li>
+                            <li>Type: <?= $oneTri['Type'] ?></li>
+                            <li>Catégorie: <?= $oneTri['FirstCat'] ?> <?= $oneTri['SecondCat'] ?> <?= $oneTri['ThirdCat'] ?></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        <?php }
+    } ?>
+</div>
+
+<div class="filter-results hidden">
+    <?php if(isset($filterCat)) {
+        foreach ($filterCat as $oneFilter) { ?>
+            <div class="oneArticle">
+                <img class="product-img" src="<?= $wwwUrl . $oneFilter['Image']; ?>">
+                <div class="desc">
+                    <ul class="list">
+                        <li>Nom: <?= $oneFilter['NameProduct'] ?></li>
+                        <li>Description: <?= $oneFilter['Description']; ?></li>
+                        <li>Price: <?= $oneFilter['Price']; ?> Blue Essence</li>
+                        <li>Type: <?= $oneFilter['Type'] ?></li>
+                        <li>Catégorie: <?= $oneFilter['FirstCat'] ?> <?= $oneFilter['SecondCat'] ?> <?= $oneFilter['ThirdCat'] ?></li>
+                    </ul>
+                    <button class="modalBtn">En savoir plus</button>
+                </div>
+
+                <div class="modal myModal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div class="slick">
+                            <div><img src="<?= $wwwUrl . $oneFilter['Image']; ?>"></div>
+                            <?php if (isset($oneFilter['Image2'])){ ?>
+                                <div><img src="<?= $wwwUrl . $oneFilter['Image2']; ?>"></div>
+                            <?php } ?>
+                        </div>
+                        <ul class="list">
+                            <li>Nom: <?= $oneFilter['NameProduct'] ?></li>
+                            <li>Description: <?= $oneFilter['Description']; ?></li>
+                            <li>Price: <?= $oneFilter['Price']; ?> Blue Essence</li>
+                            <li>Type: <?= $oneFilter['Type'] ?></li>
+                            <li>Catégorie: <?= $oneFilter['FirstCat'] ?> <?= $oneFilter['SecondCat'] ?> <?= $oneFilter['ThirdCat'] ?></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        <?php }
+    } ?>
+</div>

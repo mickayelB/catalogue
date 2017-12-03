@@ -1,0 +1,67 @@
+<div id="newArticle">
+    <form method="post" action="<?= $requestUrl; ?>/admin">
+        <fieldset>
+            <legend>Création d'un produit:</legend>
+            <ul class="list" id="list1">
+                <li>
+                    <label for="nameProduct">Nom: </label>
+                    <input type="text" name="nameProduct" id="nameProduct">
+                </li>
+                <li>
+                    <label for="image">Image: </label>
+                    <input type="text" name="Image" id="image">
+                </li>
+                <li>
+                    <label for="desc">Description: </label>
+                    <input type="text" name="Description" id="desc">
+                </li>
+                <li><label for="price">Prix: </label>
+                    <input type="number" name="Price" id="price">
+                </li>
+            </ul>
+            <ul class="list" id="list2">
+                <li>
+                    <label for="type">Type: </label>
+                    <input type="text" name="Type" id="type">
+                </li>
+                <li>
+                    <label for="firstCat">Première Catégorie: </label>
+                    <input type="text" name="FirstCat" id="firstCat">
+                </li>
+                <li>
+                    <label for="SecondCat">Deuxième Catégorie: </label>
+                    <input type="text" name="SecondCat" id="SecondCat">
+                </li>
+                <li>
+                    <label for="ThirdCat">Troisième Catégorie: </label>
+                    <input type="text" name="ThirdCat" id="ThirdCat">
+                </li>
+            </ul>
+            <input type="submit">
+        </fieldset>
+    </form>
+</div>
+
+<div class="articles">
+    <?php foreach($articles as $oneArticle){ ?>
+        <div class="oneArticle">
+            <img class="product-img" src="<?= $wwwUrl . $oneArticle['Image']; ?>">
+            <div class="desc">
+                <ul class="list">
+                    <li>Nom: <?= $oneArticle['NameProduct'] ?></li>
+                    <li>Description: <?= $oneArticle['Description']; ?></li>
+                    <li>Price: <?= $oneArticle['Price']; ?> Blue Essence</li>
+                    <li>Type: <?= $oneArticle['Type'] ?></li>
+                    <li>Catégorie: <?= $oneArticle['FirstCat'] ?> <?= $oneArticle['SecondCat'] ?> <?= $oneArticle['ThirdCat'] ?></li>
+                </ul>
+                <form method="post" action="<?= $requestUrl ?>/admin">
+                    <input type="submit" name="deleteProduct" value="Supprimer">
+                    <input type="hidden" name="id_delete" value="<?= $oneArticle['Id']; ?>">
+                </form>
+                <form method="post" action="<?= $requestUrl ?>/edit">
+                    <input type="submit" name="editProduct" value="Editer">
+                    <input type="hidden" name="id_edit" value="<?= $oneArticle['Id']; ?>">
+                </form>
+            </div>
+    <?php } ?>
+</div>

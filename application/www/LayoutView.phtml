@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Blog</title>
+    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/normalize-3.0.3.min.css">
+    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/font-awesome-4.3.0.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= $wwwUrl ?>/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="<?= $wwwUrl ?>/slick/slick-theme.css"/>
+
+
+    <!-- Feuilles de styles de l'application -->
+    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/styles.css">
+</head>
+<body>
+
+<!-- En-tête commune -->
+<header>
+    <div id="title-header">
+        <h1>Catalogue</h1>
+        <nav>
+            <ul>
+                <li><a href="<?= $requestUrl ?>">Accueil</a></li>
+                <li><a href="<?= $requestUrl ?>/admin">Admin</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<!-- Interface utilisateur -->
+
+
+<main>
+    <div id="notice" class="notice">
+        <?php if($flashBag->hasMessages()){
+            $allFlashBag = $flashBag->fetchMessages();
+            foreach ($allFlashBag as $unFlashBag) { ?>
+                <p><?= $unFlashBag; ?></p>
+            <?php }
+        } ?>
+    </div>
+    <!-- Affichage du template lié à la vue -->
+    <?php include $this->viewData['template']; ?>
+</main>
+
+<!-- Pied de page commun -->
+<footer>
+</footer>
+
+
+<!-- Librairie jQuery -->
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="<?= $wwwUrl ?>/slick/slick.min.js"></script>
+<!-- JavaScript de l'application -->
+<script src="<?= $wwwUrl ?>/js/utilities.js"></script>
+<!-- Code principal JavaScript de l'application -->
+<script src="<?= $wwwUrl ?>/js/main.js"></script>
+
+</body>
+</html>

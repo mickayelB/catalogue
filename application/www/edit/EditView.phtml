@@ -1,0 +1,18 @@
+<form class="formEdit" method="post" action="<?= $requestUrl ?>/admin" enctype="multipart/form-data">
+    <label for="nameProduct">Nom: </label>
+    <input type="text" name="nameProduct" value="<?= $edit['NameProduct']; ?>" id="nameProduct">
+    <label for="desc">Description: </label>
+    <input type="text" name="Description" value="<?= $edit['Description']; ?>" id="desc">
+    <label for="price">Prix: </label>
+    <input type="number" name="Price" value="<?= $edit['Price']; ?>" id="price">
+    <label for="type">Type: </label>
+    <input type="text" name="Type" value="<?= $edit['Type']; ?>" id="type">
+    <label for="firstCat">Première Catégorie: </label>
+    <input type="text" name="FirstCat" value="<?= $edit['FirstCat']; ?>" id="firstCat">
+    <label for="SecondCat">Deuxième Catégorie: </label>
+    <input type="text" name="SecondCat" value="<?= $edit['SecondCat']; ?>" id="SecondCat">
+    <label for="ThirdCat">Troisième Catégorie: </label>
+    <input type="text" name="ThirdCat" value="<?= $edit['ThirdCat']; ?>" id="ThirdCat">
+    <input type="submit">
+    <input type="hidden" name="product_edited" value="<?= $edit['Id']; ?>">
+</form>
